@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.hyphenate.chatuidemo"
     android:versionCode="38"
-    android:versionName="3.3.1">
+    android:versionName="1.1.0">
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -62,7 +62,7 @@
         <activity
             android:name=".ui.SplashActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/horizontal_slide">
+            android:theme="@style/NewAppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -170,12 +170,16 @@
             android:theme="@style/MyDialogStyle" />
         <activity
             android:name=".circle.CircleMainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/MyDialogStyle" />
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ui.PublicWebviewActivity"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".circle.ImagePagerActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/MyDialogStyle" />
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="adjustPan" />
         <!-- 显示下载大图页面 -->
         <activity
             android:name="com.hyphenate.easeui.ui.EaseShowBigImageActivity"

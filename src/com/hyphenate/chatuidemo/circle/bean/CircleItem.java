@@ -1,8 +1,8 @@
 package com.hyphenate.chatuidemo.circle.bean;
 
-import java.util.List;
-
 import android.text.TextUtils;
+
+import java.util.List;
 
 
 public class CircleItem extends BaseBean{
@@ -17,12 +17,21 @@ public class CircleItem extends BaseBean{
 	private String createTime;
 	private String type;//1:链接  2:图片
 	private String linkImg;
+	private String linkUrl;
 	private String linkTitle;
 	private List<String> photos;
 	private List<FavortItem> favorters;
 	private List<CommentItem> comments;
 	private User user;
-	
+
+	public String getLinkUrl() {
+		return linkUrl;
+	}
+
+	public void setLinkUrl(String linkUrl) {
+		this.linkUrl = linkUrl;
+	}
+
 	public String getId() {
 		return id;
 	}
