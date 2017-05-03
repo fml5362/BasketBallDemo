@@ -10,12 +10,12 @@
         android:padding="0dp">
 
         <com.hyphenate.easeui.widget.EaseTitleBar
-            app:titleBarTitle="我的"
+            app:titleBarTitle="赛事"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <RelativeLayout
-            android:id="@+id/message_rl"
+            android:id="@+id/liansai_rl"
             style="@style/IMTbleLine">
 
             <TextView
@@ -25,7 +25,7 @@
                 android:layout_centerVertical="true"
                 android:drawablePadding="10dp"
                 android:gravity="center"
-                android:text="我的消息"
+                android:text="创建联赛"
                 android:textColor="#000000"
                 android:textSize="14sp" />
 
@@ -38,7 +38,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/mytiezi_rl"
+            android:id="@+id/qiudui_rl"
             style="@style/IMTbleLine">
 
             <TextView
@@ -48,7 +48,7 @@
                 android:layout_centerVertical="true"
                 android:drawablePadding="10dp"
                 android:gravity="center"
-                android:text="我的帖子"
+                android:text="创建球队"
                 android:textColor="#000000"
                 android:textSize="14sp" />
 
@@ -60,50 +60,6 @@
                 android:contentDescription="@string/app_name" />
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/mydetails_rl"
-            style="@style/IMTbleLine">
-
-            <TextView
-                android:id="@+id/mydetails"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:drawablePadding="10dp"
-                android:gravity="center"
-                android:text="个人信息"
-                android:textColor="#000000"
-                android:textSize="14sp" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:contentDescription="@string/app_name" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:id="@+id/mysetting_rl"
-            style="@style/IMTbleLine">
-
-            <TextView
-                android:id="@+id/mysetting"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:drawablePadding="10dp"
-                android:gravity="center"
-                android:text="设置"
-                android:textColor="#000000"
-                android:textSize="14sp" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:contentDescription="@string/app_name" />
-        </RelativeLayout>
     </LinearLayout>
 
 </ScrollView>

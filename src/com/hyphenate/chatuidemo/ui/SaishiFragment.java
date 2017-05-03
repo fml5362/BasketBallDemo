@@ -23,22 +23,21 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
-import com.hyphenate.chat.EMClient;
 import com.hyphenate.chatuidemo.R;
 
 /**
  * settings screen
  */
 @SuppressWarnings({"FieldCanBeLocal"})
-public class MyFragment extends Fragment implements OnClickListener {
-    private RelativeLayout message_rl, mytiezi_rl, mydetails_rl, mysetting_rl;
+public class SaishiFragment extends Fragment implements OnClickListener {
+    private RelativeLayout qiudui_rl, liansai_rl;
 
-    public MyFragment() {
+    public SaishiFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_me, container, false);
+        return inflater.inflate(R.layout.fragment_saishi, container, false);
     }
 
     @Override
@@ -55,33 +54,21 @@ public class MyFragment extends Fragment implements OnClickListener {
     }
 
     private void initView() {
-        message_rl = (RelativeLayout) getView().findViewById(R.id.message_rl);
-        mytiezi_rl = (RelativeLayout) getView().findViewById(R.id.mytiezi_rl);
-        mydetails_rl = (RelativeLayout) getView().findViewById(R.id.mydetails_rl);
-        mysetting_rl = (RelativeLayout) getView().findViewById(R.id.mysetting_rl);
-        message_rl.setVisibility(View.GONE);
-        message_rl.setOnClickListener(this);
-        mytiezi_rl.setOnClickListener(this);
-        mydetails_rl.setOnClickListener(this);
-        mysetting_rl.setOnClickListener(this);
+        qiudui_rl = (RelativeLayout) getView().findViewById(R.id.qiudui_rl);
+        liansai_rl = (RelativeLayout) getView().findViewById(R.id.liansai_rl);
+        qiudui_rl.setOnClickListener(this);
+        liansai_rl.setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.message_rl:
-                startActivity(new Intent(getActivity(), ContactActivity.class));
+            case R.id.qiudui_rl:
+                startActivity(new Intent(getActivity(), Circle_Send_ThemeActivity.class).putExtra("THEME", "THEME"));
                 break;
-            case R.id.mytiezi_rl:
-
-                break;
-            case R.id.mysetting_rl:
-                startActivity(new Intent(getActivity(), SettingActivity.class));
-                break;
-            case R.id.mydetails_rl:
-                startActivity(new Intent(getActivity(), UserProfileActivity.class).putExtra("setting", true)
-                        .putExtra("username", EMClient.getInstance().getCurrentUser()));
+            case R.id.liansai_rl:
+                startActivity(new Intent(getActivity(), Circle_Send_ThemeActivity.class).putExtra("THEME", "ACTIVITY"));
                 break;
         }
     }

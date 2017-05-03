@@ -29,7 +29,10 @@ android {
         targetSdkVersion 22
         multiDexEnabled true
     }
-
+    aaptOptions {
+        cruncherEnabled = false
+        useNewCruncher = false
+    }
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'

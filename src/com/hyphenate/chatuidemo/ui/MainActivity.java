@@ -128,9 +128,9 @@ public class MainActivity extends BaseActivity {
         UserDao userDao = new UserDao(this);
         conversationListFragment = new ConversationListFragment();
         circleMainActivity = new CircleMainActivity();
-        SettingsFragment settingFragment = new SettingsFragment();
+        SaishiFragment saishiFragment = new SaishiFragment();
         MyFragment myFragment = new MyFragment();
-        fragments = new Fragment[]{conversationListFragment, circleMainActivity, myFragment, settingFragment};
+        fragments = new Fragment[]{conversationListFragment, circleMainActivity, saishiFragment, myFragment};
 
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, conversationListFragment)
                 .add(R.id.fragment_container, circleMainActivity).hide(circleMainActivity).show(conversationListFragment)
@@ -169,8 +169,8 @@ public class MainActivity extends BaseActivity {
         mTabs = new Button[4];
         mTabs[0] = (Button) findViewById(R.id.btn_conversation);
         mTabs[1] = (Button) findViewById(R.id.btn_address_list);
-        mTabs[2] = (Button) findViewById(R.id.btn_my);
-        mTabs[3] = (Button) findViewById(R.id.btn_setting);
+        mTabs[2] = (Button) findViewById(R.id.btn_setting);
+        mTabs[3] = (Button) findViewById(R.id.btn_my);
         // select first tab
         mTabs[0].setSelected(true);
     }
@@ -189,10 +189,10 @@ public class MainActivity extends BaseActivity {
                 index = 1;
                 break;
             case R.id.btn_my:
-                index = 2;
+                index = 3;
                 break;
             case R.id.btn_setting:
-                index = 3;
+                index = 2;
                 break;
         }
         if (currentTabIndex != index) {

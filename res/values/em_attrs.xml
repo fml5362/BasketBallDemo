@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="ContactItemView">
-        <attr name="contactItemImage" format="reference"/>
-        <attr name="contactItemName" format="string"/>
+        <attr name="contactItemImage" format="reference" />
+        <attr name="contactItemName" format="string" />
+    </declare-styleable>
+    <declare-styleable name="NoteEditText">
+        <attr name="lineColor" format="color|reference" />
+        <attr name="padding" format="dimension|reference" />
+        <attr name="lineStrokeWidth" format="integer|reference"></attr>
     </declare-styleable>
 </resources>
