@@ -1,18 +1,20 @@
 package com.hyphenate.chatuidemo.circle;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -44,7 +46,7 @@ import java.util.List;
 * @date 2015-12-28 下午4:21:18 
 *
  */
-public class CircleMainActivity extends Activity implements OnRefreshListener, ICircleView {
+public class CircleMainActivity extends Fragment implements OnRefreshListener, ICircleView {
 
 	protected static final String TAG = MainActivity.class.getSimpleName();
 	private ListView mCircleLv;
@@ -62,11 +64,14 @@ public class CircleMainActivity extends Activity implements OnRefreshListener, I
 
 	private CirclePresenter mPresenter;
 	private CommentConfig mCommentConfig;
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		return inflater.inflate(R.layout.activity_main, container, false);
+	}
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
 		mPresenter = new CirclePresenter(this);
 		initView();
 		loadData();
@@ -74,8 +79,8 @@ public class CircleMainActivity extends Activity implements OnRefreshListener, I
 
 	@SuppressLint({ "ClickableViewAccessibility", "InlinedApi" })
 	private void initView() {
-		mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.mRefreshLayout);
-		mCircleLv = (ListView) findViewById(R.id.circleLv);
+		mSwipeRefreshLayout = (SwipeRefreshLayout) getView().findViewById(R.id.mRefreshLayout);
+		mCircleLv = (ListView) getView().findViewById(R.id.circleLv);
 		mCircleLv.setOnScrollListener(new SwpipeListViewOnScrollListener(mSwipeRefreshLayout));
 		mCircleLv.setOnTouchListener(new OnTouchListener() {
 			@Override
@@ -93,13 +98,13 @@ public class CircleMainActivity extends Activity implements OnRefreshListener, I
 		mSwipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
 				android.R.color.holo_orange_light, android.R.color.holo_red_light);
 
-		mAdapter = new CircleAdapter(this);
+		mAdapter = new CircleAdapter(getActivity());
 		mAdapter.setCirclePresenter(mPresenter);
 		mCircleLv.setAdapter(mAdapter);
 		
-		mEditTextBody = (LinearLayout) findViewById(R.id.editTextBodyLl);
-		mEditText = (EditText) findViewById(R.id.circleEt);
-		sendIv = (ImageView) findViewById(R.id.sendIv);
+		mEditTextBody = (LinearLayout) getView().findViewById(R.id.editTextBodyLl);
+		mEditText = (EditText) getView().findViewById(R.id.circleEt);
+		sendIv = (ImageView) getView().findViewById(R.id.sendIv);
 		sendIv.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -107,7 +112,7 @@ public class CircleMainActivity extends Activity implements OnRefreshListener, I
 					//发布评论
 					String content = mEditText.getText().toString().trim();
 					if(TextUtils.isEmpty(content)){
-						Toast.makeText(CircleMainActivity.this, "评论内容不能为空...", Toast.LENGTH_SHORT).show();
+						Toast.makeText(getActivity(), "评论内容不能为空...", Toast.LENGTH_SHORT).show();
 						return;
 					}
 					mPresenter.addComment(content, mCommentConfig);
@@ -118,7 +123,7 @@ public class CircleMainActivity extends Activity implements OnRefreshListener, I
 
 		setViewTreeObserver();
 	}
-	
+
 
 	private void setViewTreeObserver() {
 		
@@ -188,16 +193,6 @@ public class CircleMainActivity extends Activity implements OnRefreshListener, I
 	}
 
 
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-           if(mEditTextBody != null && mEditTextBody.getVisibility() == View.VISIBLE){
-        	   mEditTextBody.setVisibility(View.GONE);
-        	   return true;
-           }
-        }
-		return super.onKeyDown(keyCode, event);
-	}
 
 	@Override
 	public void update2DeleteCircle(String circleId) {

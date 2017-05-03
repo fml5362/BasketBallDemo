@@ -47,6 +47,7 @@ import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chatuidemo.Constant;
 import com.hyphenate.chatuidemo.DemoHelper;
 import com.hyphenate.chatuidemo.R;
+import com.hyphenate.chatuidemo.circle.CircleMainActivity;
 import com.hyphenate.chatuidemo.db.InviteMessgeDao;
 import com.hyphenate.chatuidemo.db.UserDao;
 import com.hyphenate.chatuidemo.runtimepermissions.PermissionsManager;
@@ -68,7 +69,7 @@ public class MainActivity extends BaseActivity {
     private TextView unreadAddressLable;
 
     private Button[] mTabs;
-    private ContactListFragment contactListFragment;
+    private CircleMainActivity circleMainActivity;
     private Fragment[] fragments;
     private int index;
     private int currentTabIndex;
@@ -126,13 +127,13 @@ public class MainActivity extends BaseActivity {
         inviteMessgeDao = new InviteMessgeDao(this);
         UserDao userDao = new UserDao(this);
         conversationListFragment = new ConversationListFragment();
-        contactListFragment = new ContactListFragment();
+        circleMainActivity = new CircleMainActivity();
         SettingsFragment settingFragment = new SettingsFragment();
         MyFragment myFragment = new MyFragment();
-        fragments = new Fragment[]{conversationListFragment, contactListFragment, myFragment, settingFragment};
+        fragments = new Fragment[]{conversationListFragment, circleMainActivity, myFragment, settingFragment};
 
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, conversationListFragment)
-                .add(R.id.fragment_container, contactListFragment).hide(contactListFragment).show(conversationListFragment)
+                .add(R.id.fragment_container, circleMainActivity).hide(circleMainActivity).show(conversationListFragment)
                 .commit();
 
         //register broadcast receiver to receive the change of group from DemoHelper
@@ -284,9 +285,9 @@ public class MainActivity extends BaseActivity {
                         conversationListFragment.refresh();
                     }
                 } else if (currentTabIndex == 1) {
-                    if (contactListFragment != null) {
-                        contactListFragment.refresh();
-                    }
+//                    if (circleMainActivity != null) {
+//                        circleMainActivity.refresh();
+//                    }
                 }
                 String action = intent.getAction();
                 if (action.equals(Constant.ACTION_GROUP_CHANAGED)) {
