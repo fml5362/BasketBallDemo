@@ -184,12 +184,12 @@
         "source": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\exploded-aar\\ChatDemoUI3.0\\EaseUI\\unspecified\\res\\layout\\ease_widget_title_bar.xml"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\res\\merged\\release\\layout\\ease_search_bar_with_padding.xml",
-        "source": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\exploded-aar\\ChatDemoUI3.0\\EaseUI\\unspecified\\res\\layout\\ease_search_bar_with_padding.xml"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\res\\merged\\release\\layout\\rp_open_packet_dialog.xml",
         "source": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\exploded-aar\\com.hyphenate.redpacket\\redpacket-alipay\\1.1.2\\res\\layout\\rp_open_packet_dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\res\\merged\\release\\layout\\ease_search_bar_with_padding.xml",
+        "source": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\exploded-aar\\ChatDemoUI3.0\\EaseUI\\unspecified\\res\\layout\\ease_search_bar_with_padding.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\res\\merged\\release\\layout\\ease_row_sent_location.xml",

@@ -47,7 +47,6 @@ import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chatuidemo.Constant;
 import com.hyphenate.chatuidemo.DemoHelper;
 import com.hyphenate.chatuidemo.R;
-import com.hyphenate.chatuidemo.circle.CircleMainActivity;
 import com.hyphenate.chatuidemo.db.InviteMessgeDao;
 import com.hyphenate.chatuidemo.db.UserDao;
 import com.hyphenate.chatuidemo.runtimepermissions.PermissionsManager;
@@ -69,7 +68,7 @@ public class MainActivity extends BaseActivity {
     private TextView unreadAddressLable;
 
     private Button[] mTabs;
-    private CircleMainActivity circleMainActivity;
+    private FaxianFragment faxianFragment;
     private Fragment[] fragments;
     private int index;
     private int currentTabIndex;
@@ -127,13 +126,13 @@ public class MainActivity extends BaseActivity {
         inviteMessgeDao = new InviteMessgeDao(this);
         UserDao userDao = new UserDao(this);
         conversationListFragment = new ConversationListFragment();
-        circleMainActivity = new CircleMainActivity();
+        faxianFragment = new FaxianFragment();
         SaishiFragment saishiFragment = new SaishiFragment();
         MyFragment myFragment = new MyFragment();
-        fragments = new Fragment[]{conversationListFragment, circleMainActivity, saishiFragment, myFragment};
+        fragments = new Fragment[]{conversationListFragment, faxianFragment, saishiFragment, myFragment};
 
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, conversationListFragment)
-                .add(R.id.fragment_container, circleMainActivity).hide(circleMainActivity).show(conversationListFragment)
+                .add(R.id.fragment_container, faxianFragment).hide(faxianFragment).show(conversationListFragment)
                 .commit();
 
         //register broadcast receiver to receive the change of group from DemoHelper
