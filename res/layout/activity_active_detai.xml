@@ -45,8 +45,9 @@
                         android:textColor="@color/white"
                         android:textSize="16sp" />
 
+
                     <TextView
-                        android:id="@+id/tv_active_time"
+                        android:id="@+id/tv_active_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
@@ -54,7 +55,7 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/tv_active_text"
+                        android:id="@+id/tv_active_time"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"

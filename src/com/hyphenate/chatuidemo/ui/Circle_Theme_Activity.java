@@ -77,11 +77,18 @@ public class Circle_Theme_Activity extends BaseActivity {
 
     private void requestData(final boolean b) {
         if (b) {
-            mThemeLists = qiusaixinxiDao.getMessagesList("自己");
+            mThemeLists = qiusaixinxiDao.getMessagesList(true);
         } else {
-            mThemeLists = qiusaixinxiDao.getMessagesList("tatata自己");
+            mThemeLists = qiusaixinxiDao.getMessagesList(false);
 
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        requestData(false);
+        mAdapter.notifyDataSetChanged();
     }
 
     class MyAdapter extends BaseAdapter {

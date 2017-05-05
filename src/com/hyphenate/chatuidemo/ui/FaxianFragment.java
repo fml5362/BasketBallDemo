@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.hyphenate.chatuidemo.R;
 import com.hyphenate.chatuidemo.circle.CircleMainActivity;
@@ -18,15 +17,16 @@ import com.hyphenate.chatuidemo.circle.CircleMainActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class FaxianFragment extends Fragment implements OnClickListener {
 
     private List<Fragment> fragmentList;
     private CircleMainActivity circleMainActivity;
     private QiuxunActivity qiuxunActivity;
     private ViewPager mViewPager;
-    private TextView qiuxun, dongtai;
     private List<String> titles;
-
+    private MyAdapter myAdapter;
+    private PagerSlidingTabStrip tabs;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.activity_oa_message_new, container, false);
@@ -41,19 +41,39 @@ public class FaxianFragment extends Fragment implements OnClickListener {
 
     private void initView() {
         mViewPager = (ViewPager) getView().findViewById(R.id.viewPager);
-        qiuxun = (TextView) getView().findViewById(R.id.qiuxun);
-        dongtai = (TextView) getView().findViewById(R.id.dongtai);
-        qiuxun.setOnClickListener(this);
-        dongtai.setOnClickListener(this);
+        tabs = (PagerSlidingTabStrip) getView().findViewById(R.id.tabs);
+        tabs.setVisibility(View.VISIBLE);
+        tabs.setTextColorResource(R.color.black);
+        myAdapter = new MyAdapter(getActivity().getSupportFragmentManager(), titles);
         mViewPager
-                .setAdapter(new MyAdapter(getActivity().getSupportFragmentManager(), titles));
+                .setAdapter(myAdapter);
+        tabs.setViewPager(mViewPager);
+        tabs.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrolled(int arg0, float arg1, int arg2) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int arg0) {
+                // TODO Auto-generated method stub
+
+            }
+        });
     }
 
     private void initData() {
         fragmentList = new ArrayList<Fragment>();
         titles = new ArrayList<String>();
-        titles.add("aaaa");
+        titles.add("球讯");
+        titles.add("动态");
         if (circleMainActivity == null) {
             circleMainActivity = new CircleMainActivity();
         }
@@ -66,14 +86,6 @@ public class FaxianFragment extends Fragment implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.dongtai:
-                mViewPager.setCurrentItem(1);
-                break;
-            case R.id.qiuxun:
-                mViewPager.setCurrentItem(0);
-                break;
-        }
     }
 
     public class MyAdapter extends FragmentPagerAdapter {

@@ -135,9 +135,9 @@ public class Activity_Active_Detail extends BaseActivity implements
                     Toast.makeText(Activity_Active_Detail.this, "评论不能为空", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                circleEt.setText("");
                 mThemeLists.add("自己 : "+circleEt.getText().toString());
                 myAdapter.notifyDataSetChanged();
+                circleEt.setText("");
             }
         });
         myAdapter = new MyAdapter();

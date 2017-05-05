@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.hyphenate.chatuidemo.R;
 import com.hyphenate.chatuidemo.db.QiusaixinxiDao;
 
+import java.util.Random;
 import java.util.UUID;
 
 
@@ -58,14 +59,38 @@ public class Circle_Send_ThemeActivity extends BaseActivity implements
         detail.setAll(noteEditText_about.getText().toString());
         detail.setName(noteEditText_name.getText().toString());
         detail.setTime(noteEditText_time.getText().toString());
-        detail.setMyNameOrOther("tatata自己");
-        detail.setDeleteFlag("0");
+        int aa = testRandom2();
+        if (aa == 0) {
+            detail.setMyNameOrOther("自己");
+            detail.setDeleteFlag("0");
+        } else if(aa==1){
+            detail.setMyNameOrOther("张三");
+            detail.setDeleteFlag("1");
+        }else if (aa==2){
+            detail.setMyNameOrOther("李四");
+            detail.setDeleteFlag("2");
+        }
         detail.setFlag(newflag);
         detail.setId(UUID.randomUUID().toString());
         QiusaixinxiDao qiusaixinxiDao = new QiusaixinxiDao(this);
         qiusaixinxiDao.saveMessage(detail);
         Toast.makeText(Circle_Send_ThemeActivity.this, "发送成功", Toast.LENGTH_SHORT).show();
         finish();
+    }
+
+    //在一定范围内生成随机数.
+    //比如此处要求在[0 - n)内生成随机数.
+    //注意:包含0不包含n
+    int a;
+
+    private int testRandom2() {
+        Random random = new Random();
+
+        for (int i = 0; i < 1; i++) {
+            System.out.println("random.nextInt()=" + random.nextInt(3));
+            a = random.nextInt(2);
+        }
+        return a;
     }
 
     private void initView() {
@@ -75,6 +100,7 @@ public class Circle_Send_ThemeActivity extends BaseActivity implements
         btn_right.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                testRandom2();
                 if (flag.equals("THEME")) {
                     sendThemeData("l0");
                 } else if (flag.equals("ACTIVITY")) {
