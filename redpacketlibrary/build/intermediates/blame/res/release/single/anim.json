@@ -44,12 +44,12 @@
         "source": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\exploded-aar\\ChatDemoUI3.0\\EaseUI\\unspecified\\res\\anim\\push_top_out.xml"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\res\\merged\\release\\anim\\push_bottom_in.xml",
-        "source": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\exploded-aar\\ChatDemoUI3.0\\EaseUI\\unspecified\\res\\anim\\push_bottom_in.xml"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\res\\merged\\release\\anim\\slide_in_from_left.xml",
         "source": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\exploded-aar\\ChatDemoUI3.0\\EaseUI\\unspecified\\res\\anim\\slide_in_from_left.xml"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\res\\merged\\release\\anim\\push_bottom_in.xml",
+        "source": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\exploded-aar\\ChatDemoUI3.0\\EaseUI\\unspecified\\res\\anim\\push_bottom_in.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\res\\merged\\release\\anim\\voice_from_icon.xml",

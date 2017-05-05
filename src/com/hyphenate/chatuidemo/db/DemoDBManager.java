@@ -322,11 +322,11 @@ public class DemoDBManager {
      *
      * @return
      */
-    synchronized public List<ActiveDetail> getQiusaiMessagesList() {
+    synchronized public List<ActiveDetail> getQiusaiMessagesList(String name) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         List<ActiveDetail> msgs = new ArrayList<ActiveDetail>();
         if (db.isOpen()) {
-            Cursor cursor = db.rawQuery("select * from " + QiusaixinxiDao.TABLE_NAME + " desc", null);
+            Cursor cursor = db.rawQuery("select * from " + QiusaixinxiDao.TABLE_NAME + " where " + QiusaixinxiDao.MYNAMEOROTHER + " ='" + name+"'" , null);
             while (cursor.moveToNext()) {
                 ActiveDetail msg = new ActiveDetail();
                 String id = cursor.getString(cursor.getColumnIndex(QiusaixinxiDao.ID));

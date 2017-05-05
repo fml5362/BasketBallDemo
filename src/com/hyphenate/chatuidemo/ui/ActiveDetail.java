@@ -1,6 +1,8 @@
 package com.hyphenate.chatuidemo.ui;
 
-public class ActiveDetail {
+import java.io.Serializable;
+
+public class ActiveDetail implements Serializable {
 
     private String name;
     private String id;

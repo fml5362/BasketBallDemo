@@ -74,7 +74,8 @@ public class MyFragment extends Fragment implements OnClickListener {
                 startActivity(new Intent(getActivity(), ContactActivity.class));
                 break;
             case R.id.mytiezi_rl:
-
+                startActivity(new Intent(getActivity(), Circle_Theme_Activity.class).putExtra("flag", true)
+                );
                 break;
             case R.id.mysetting_rl:
                 startActivity(new Intent(getActivity(), SettingActivity.class));

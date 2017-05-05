@@ -58,7 +58,7 @@ public class Circle_Send_ThemeActivity extends BaseActivity implements
         detail.setAll(noteEditText_about.getText().toString());
         detail.setName(noteEditText_name.getText().toString());
         detail.setTime(noteEditText_time.getText().toString());
-        detail.setMyNameOrOther("自己");
+        detail.setMyNameOrOther("tatata自己");
         detail.setDeleteFlag("0");
         detail.setFlag(newflag);
         detail.setId(UUID.randomUUID().toString());

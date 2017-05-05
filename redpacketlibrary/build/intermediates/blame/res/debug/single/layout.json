@@ -72,12 +72,12 @@
         "source": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\exploded-aar\\ChatDemoUI3.0\\EaseUI\\unspecified\\res\\layout\\ease_row_expression.xml"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\res\\merged\\debug\\layout\\ease_widget_voice_recorder.xml",
-        "source": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\exploded-aar\\ChatDemoUI3.0\\EaseUI\\unspecified\\res\\layout\\ease_widget_voice_recorder.xml"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\res\\merged\\debug\\layout\\rp_fragment_group_chat_packet.xml",
         "source": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\exploded-aar\\com.hyphenate.redpacket\\redpacket-alipay\\1.1.2\\res\\layout\\rp_fragment_group_chat_packet.xml"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\res\\merged\\debug\\layout\\ease_widget_voice_recorder.xml",
+        "source": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\exploded-aar\\ChatDemoUI3.0\\EaseUI\\unspecified\\res\\layout\\ease_widget_voice_recorder.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\res\\merged\\debug\\layout\\ease_row_sent_video.xml",

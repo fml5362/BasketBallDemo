@@ -172,6 +172,14 @@
             android:theme="@style/horizontal_slide"
             android:windowSoftInputMode="adjustPan" />
         <activity
+            android:name=".ui.Activity_Active_Detail"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".ui.Circle_Theme_Activity"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name=".ui.SettingActivity"
             android:theme="@style/horizontal_slide"
             android:windowSoftInputMode="adjustPan" />
