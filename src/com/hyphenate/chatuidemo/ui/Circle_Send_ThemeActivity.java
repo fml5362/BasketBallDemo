@@ -1,6 +1,5 @@
 package com.hyphenate.chatuidemo.ui;
 
-import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
@@ -14,8 +13,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.alibaba.fastjson.JSON;
 import com.hyphenate.chatuidemo.R;
+import com.hyphenate.chatuidemo.db.QiusaixinxiDao;
+
+import java.util.UUID;
 
 
 /**
@@ -23,7 +24,7 @@ import com.hyphenate.chatuidemo.R;
  *
  * @author Administrator
  */
-public class Circle_Send_ThemeActivity extends Activity implements
+public class Circle_Send_ThemeActivity extends BaseActivity implements
         OnClickListener {
     private static final int TAKE_PICTURE = 0x000001;
     private String path = "";
@@ -52,13 +53,17 @@ public class Circle_Send_ThemeActivity extends Activity implements
 
 
     //发送创建话题的数据
-    private void sendThemeData() {
+    private void sendThemeData(String newflag) {
         ActiveDetail detail = new ActiveDetail();
         detail.setAll(noteEditText_about.getText().toString());
         detail.setName(noteEditText_name.getText().toString());
         detail.setTime(noteEditText_time.getText().toString());
-        String text = JSON.toJSONString(detail);
-        saveTempToPref(text);
+        detail.setMyNameOrOther("自己");
+        detail.setDeleteFlag("0");
+        detail.setFlag(newflag);
+        detail.setId(UUID.randomUUID().toString());
+        QiusaixinxiDao qiusaixinxiDao = new QiusaixinxiDao(this);
+        qiusaixinxiDao.saveMessage(detail);
         Toast.makeText(Circle_Send_ThemeActivity.this, "发送成功", Toast.LENGTH_SHORT).show();
         finish();
     }
@@ -70,7 +75,12 @@ public class Circle_Send_ThemeActivity extends Activity implements
         btn_right.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendThemeData();
+                if (flag.equals("THEME")) {
+                    sendThemeData("l0");
+                } else if (flag.equals("ACTIVITY")) {
+                    sendThemeData("q0");
+                }
+
             }
         });
         // 话题名子
@@ -123,17 +133,6 @@ public class Circle_Send_ThemeActivity extends Activity implements
                 "basketball", MODE_PRIVATE);
         sp.edit().putString("basketball", text).commit();
 
-    }
-
-    private void getTempFromPref() {
-//        SharedPreferences sp = getSharedPreferences(
-//                AppConstant.APPLICATION_NAME, MODE_PRIVATE);
-//        String prefStr = sp.getString(AppConstant.PREF_TEMP_IMAGES, null);
-//        if (!TextUtils.isEmpty(prefStr)) {
-//            List<ImageItem> tempImages = JSON.parseArray(prefStr,
-//                    ImageItem.class);
-//            mDataList = tempImages;
-//        }
     }
 
 

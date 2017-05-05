@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.hyphenate.chatuidemo.R;
 import com.hyphenate.chatuidemo.circle.CircleMainActivity;
@@ -23,6 +24,7 @@ public class FaxianFragment extends Fragment implements OnClickListener {
     private CircleMainActivity circleMainActivity;
     private QiuxunActivity qiuxunActivity;
     private ViewPager mViewPager;
+    private TextView qiuxun, dongtai;
     private List<String> titles;
 
     @Override
@@ -39,7 +41,10 @@ public class FaxianFragment extends Fragment implements OnClickListener {
 
     private void initView() {
         mViewPager = (ViewPager) getView().findViewById(R.id.viewPager);
-
+        qiuxun = (TextView) getView().findViewById(R.id.qiuxun);
+        dongtai = (TextView) getView().findViewById(R.id.dongtai);
+        qiuxun.setOnClickListener(this);
+        dongtai.setOnClickListener(this);
         mViewPager
                 .setAdapter(new MyAdapter(getActivity().getSupportFragmentManager(), titles));
 
@@ -61,7 +66,14 @@ public class FaxianFragment extends Fragment implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()) {
+            case R.id.dongtai:
+                mViewPager.setCurrentItem(1);
+                break;
+            case R.id.qiuxun:
+                mViewPager.setCurrentItem(0);
+                break;
+        }
     }
 
     public class MyAdapter extends FragmentPagerAdapter {
