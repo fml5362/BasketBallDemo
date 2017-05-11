@@ -11,10 +11,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hyphenate.chatuidemo.R;
 import com.hyphenate.chatuidemo.db.QiusaixinxiDao;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,6 +82,9 @@ public class Circle_Theme_Activity extends BaseActivity {
             mThemeLists = qiusaixinxiDao.getMessagesList(false);
 
         }
+        if (mThemeLists!=null&&mThemeLists.size()==0){
+            Toast.makeText(Circle_Theme_Activity.this,"暂无信息，请创建联赛或球队",Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -139,9 +142,11 @@ public class Circle_Theme_Activity extends BaseActivity {
                     holder.tv_dept.setText(themeList.getMyNameOrOther());
                 }
             }
-            ImageLoader.getInstance().displayImage(
-                    "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3318350477,3422943506&fm=23&gp=0.jpg",
-                    holder.im_theme_pic);
+            if (themeList.getFlag().equals("l0")){
+                holder.im_theme_pic.setImageResource(R.drawable.liansai);
+            }else{
+                holder.im_theme_pic.setImageResource(R.drawable.qiuxun);
+            }
             return convertView;
         }
 

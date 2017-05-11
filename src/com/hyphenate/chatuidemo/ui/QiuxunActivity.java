@@ -16,7 +16,6 @@ import android.widget.TextView;
 
 import com.hyphenate.chatuidemo.R;
 import com.hyphenate.chatuidemo.db.QiusaixinxiDao;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +49,12 @@ public class QiuxunActivity extends Fragment  {
             type = false;
         requestData(type);
         initView();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        requestData(false);
     }
 
     private void initView() {
@@ -137,9 +142,11 @@ public class QiuxunActivity extends Fragment  {
                     holder.tv_dept.setText(themeList.getMyNameOrOther());
                 }
             }
-            ImageLoader.getInstance().displayImage(
-                    "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3318350477,3422943506&fm=23&gp=0.jpg",
-                    holder.im_theme_pic);
+            if (themeList.getFlag().equals("l0")){
+                holder.im_theme_pic.setImageResource(R.drawable.liansai);
+            }else{
+                holder.im_theme_pic.setImageResource(R.drawable.qiuxun);
+            }
             return convertView;
         }
 

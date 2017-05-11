@@ -149,9 +149,9 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
         }
         //聊天室暂时不支持红包功能
         //red packet code : 注册红包菜单选项
-        if (chatType != Constant.CHATTYPE_CHATROOM) {
-            inputMenu.registerExtendMenuItem(R.string.attach_red_packet, R.drawable.em_chat_red_packet_selector, ITEM_RED_PACKET, extendMenuItemClickListener);
-        }
+//        if (chatType != Constant.CHATTYPE_CHATROOM) {
+//            inputMenu.registerExtendMenuItem(R.string.attach_red_packet, R.drawable.em_chat_red_packet_selector, ITEM_RED_PACKET, extendMenuItemClickListener);
+//        }
         //end of red packet code
     }
     

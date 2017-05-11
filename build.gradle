@@ -11,7 +11,9 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-        maven {  url "https://raw.githubusercontent.com/HyphenateInc/Hyphenate-SDK-Android/master/repository" }
+        maven {
+            url "https://raw.githubusercontent.com/HyphenateInc/Hyphenate-SDK-Android/master/repository"
+        }
     }
 }
 
@@ -32,6 +34,10 @@ android {
     aaptOptions {
         cruncherEnabled = false
         useNewCruncher = false
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
     }
     sourceSets {
         main {
@@ -58,18 +64,18 @@ android {
         release.setRoot('build-types/release')
     }
 
-    
-	signingConfigs {
-		release {
-			storeFile file("../emclient-android/hyphenate.keystore")
-			storePassword "easemob"
-			keyAlias "easemob"
-			keyPassword "easemob"
-		}
-	}
-	buildTypes {
+
+    signingConfigs {
         release {
-			signingConfig android.signingConfigs.release
+            storeFile file("../emclient-android/hyphenate.keystore")
+            storePassword "easemob"
+            keyAlias "easemob"
+            keyPassword "easemob"
+        }
+    }
+    buildTypes {
+        release {
+//            signingConfig android.signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
@@ -87,4 +93,7 @@ dependencies {
     compile files('libs/fastjson-1.2.29.jar')
     compile files('libs/universal-image-loader-1.9.4.jar')
     compile 'com.commit451:PhotoView:1.2.4'
+    compile (project(':EaseUI')) {
+        exclude module: 'support-v4'
+    }
 }
