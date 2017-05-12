@@ -129,6 +129,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/one0"
                 style="@style/IMTbleLine"
                 android:layout_marginTop="5dp">
 
@@ -144,6 +145,7 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/onet0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -152,7 +154,7 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/local_video_rl"
+                android:id="@+id/one1"
                 style="@style/IMTbleLine">
 
                 <TextView
@@ -168,6 +170,7 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/onet1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -175,7 +178,9 @@
                     android:text="22" />
             </RelativeLayout>
 
-            <RelativeLayout style="@style/IMTbleLine">
+            <RelativeLayout
+                android:id="@+id/one2"
+                style="@style/IMTbleLine">
 
                 <TextView
                     android:id="@+id/mobile_phone_tv"
@@ -190,6 +195,7 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/onet2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -197,7 +203,9 @@
                     android:text="186" />
             </RelativeLayout>
 
-            <RelativeLayout style="@style/IMTbleLine">
+            <RelativeLayout
+                android:id="@+id/one3"
+                style="@style/IMTbleLine">
 
                 <TextView
                     android:id="@+id/email_tv"
@@ -211,6 +219,7 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/onet3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -219,6 +228,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/one4"
                 style="@style/IMTbleLine"
                 android:layout_marginBottom="5dp">
 
@@ -235,6 +245,7 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/onet4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -243,7 +254,7 @@
             </RelativeLayout>
             <!--钱包  -->
             <RelativeLayout
-                android:id="@+id/wallet_rl"
+                android:id="@+id/one5"
                 style="@style/IMTbleLine">
 
                 <TextView
@@ -257,6 +268,7 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/onet5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -267,7 +279,7 @@
             <!-- soayisao -->
 
             <RelativeLayout
-                android:id="@+id/scantab"
+                android:id="@+id/one6"
                 style="@style/IMTbleLine">
 
                 <TextView
@@ -281,6 +293,7 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/onet6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -289,7 +302,7 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/setting_rl"
+                android:id="@+id/one7"
                 style="@style/IMTbleLine"
                 android:layout_marginTop="5dp">
 
@@ -304,6 +317,7 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/onet7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -312,6 +326,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/one8"
                 style="@style/IMTbleLine"
                 android:layout_marginTop="5dp">
 
@@ -326,6 +341,7 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/onet8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
