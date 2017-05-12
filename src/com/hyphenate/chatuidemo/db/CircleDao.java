@@ -16,25 +16,22 @@ package com.hyphenate.chatuidemo.db;
 import android.content.ContentValues;
 import android.content.Context;
 
-import com.hyphenate.chatuidemo.ui.ActiveDetail;
+import com.hyphenate.chatuidemo.circle.bean.CircleItem;
 
 import java.util.List;
 
-public class QiusaixinxiDao {
-    public static final String TABLE_NAME = "qiusai";
-    static final String NAME = "name";
-    static final String STARTTIME = "starttime";
-    static final String ENDTIME = "endtime";
-    static final String ADDRESS = "address";
+public class CircleDao {
+    public static final String TABLE_NAME = "circle";
+    static final String CONTENT = "content";
+    static final String CREATETIME = "createTime";
+    static final String TYPE = "type";
+    static final String LINKIMG = "linkImg";
     static final String ID = "id";
-    static final String ALLTEXT = "alltext";
-    static final String PERSON = "person";
-    static final String DELETEFLAG = "deleteflag";
-    static final String FLAG = "flag";
-    static final String MYNAMEOROTHER = "myNameOrOther";
+    static final String LINKURL = "linkUrl";
+    static final String LINKTITLE = "linkTitle";
 
 
-    public QiusaixinxiDao(Context context) {
+    public CircleDao(Context context) {
     }
 
     /**
@@ -43,8 +40,8 @@ public class QiusaixinxiDao {
      * @param message
      * @return return cursor of the message
      */
-    public Integer saveMessage(ActiveDetail message) {
-        return DemoDBManager.getInstance().saveQiusaiMessage(message);
+    public Integer saveMessage(CircleItem message) {
+        return DemoDBManager.getInstance().savecircleMessage(message);
     }
 
     /**
@@ -62,8 +59,8 @@ public class QiusaixinxiDao {
      *
      * @return
      */
-    public List<ActiveDetail> getMessagesList(boolean name) {
-        return DemoDBManager.getInstance().getQiusaiMessagesList(name);
+    public List<CircleItem> getMessagesList() {
+        return DemoDBManager.getInstance().getcircleMessagesList();
     }
 
     public void deleteMessage(String from) {

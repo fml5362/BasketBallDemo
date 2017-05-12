@@ -9,7 +9,10 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +33,7 @@ public class Circle_Send_ThemeActivity extends BaseActivity implements
     private static final int TAKE_PICTURE = 0x000001;
     private String path = "";
     private NoteEditText noteEditText_name;
+    private NoteEditText noteEditText_outtime;
     private NoteEditText noteEditText_about, noteEditText_time;
     private TextView theme_tv_name, theme_tv_time, theme_tv_desc;
     private String content_String, time_content_String, name_String;
@@ -37,7 +41,11 @@ public class Circle_Send_ThemeActivity extends BaseActivity implements
     private String subString;
     private String flag, title;
     private TextView btn_right;
+    private TextView tv_outtime;
     private LinearLayout theme_time;
+    private Spinner spinner_main_edu;
+    private ArrayAdapter<String> adapter = null;
+    private String data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,17 +64,27 @@ public class Circle_Send_ThemeActivity extends BaseActivity implements
     //发送创建话题的数据
     private void sendThemeData(String newflag) {
         ActiveDetail detail = new ActiveDetail();
-        detail.setAll(noteEditText_about.getText().toString());
+        if (newflag.equals("q0")) {
+            detail.setAll(noteEditText_about.getText().toString());
+        } else {
+            if (TextUtils.isEmpty(data)) {
+                detail.setAll("5V5");
+            } else {
+                detail.setAll(data);
+            }
+            detail.setAddress(noteEditText_time.getText().toString());
+            detail.setStarttime(noteEditText_about.getText().toString());
+            detail.setEndtime(noteEditText_outtime.getText().toString());
+        }
         detail.setName(noteEditText_name.getText().toString());
-        detail.setTime(noteEditText_time.getText().toString());
         int aa = testRandom2();
         if (aa == 0) {
             detail.setMyNameOrOther("自己");
             detail.setDeleteFlag("0");
-        } else if(aa==1){
+        } else if (aa == 1) {
             detail.setMyNameOrOther("张三");
             detail.setDeleteFlag("1");
-        }else if (aa==2){
+        } else if (aa == 2) {
             detail.setMyNameOrOther("李四");
             detail.setDeleteFlag("2");
         }
@@ -102,19 +120,17 @@ public class Circle_Send_ThemeActivity extends BaseActivity implements
             public void onClick(View v) {
                 testRandom2();
                 if (flag.equals("THEME")) {
-                    sendThemeData("l0");
-                } else if (flag.equals("ACTIVITY")) {
                     sendThemeData("q0");
+                } else if (flag.equals("ACTIVITY")) {
+                    sendThemeData("l0");
                 }
 
             }
         });
-        // 话题名子
         noteEditText_name = (NoteEditText) findViewById(R.id.noteEditText_name);
-        // 话题简介
         noteEditText_about = (NoteEditText) findViewById(R.id.noteEditText_about);
-        //活动的时间
         noteEditText_time = (NoteEditText) findViewById(R.id.noteEditText_time);
+        noteEditText_outtime = (NoteEditText) findViewById(R.id.noteEditText_outtime);
         if (!TextUtils.isEmpty(name_String)) {
             noteEditText_name.setText(name_String);
             Editable text = noteEditText_name.getText();
@@ -137,18 +153,47 @@ public class Circle_Send_ThemeActivity extends BaseActivity implements
         theme_tv_name = (TextView) findViewById(R.id.theme_tv_name);
         theme_tv_time = (TextView) findViewById(R.id.theme_tv_time);
         theme_tv_desc = (TextView) findViewById(R.id.theme_tv_desc);
+        tv_outtime = (TextView) findViewById(R.id.tv_outtime);
+        // 设置数据源
+        String[] strArr = new String[]{"5V5", "4V4", "3V3", "单挑赛", "三分大赛", "技巧大赛", "其他"};
+
+        spinner_main_edu = (Spinner) findViewById(R.id.spinner_main_edu);
+        adapter = new ArrayAdapter<String>(Circle_Send_ThemeActivity.this,
+                android.R.layout.simple_list_item_single_choice, strArr);
+// 给控件设置适配器
+        spinner_main_edu.setAdapter(adapter);
+        spinner_main_edu
+                .setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent,
+                                               View view, int position, long id) {
+                        data = parent.getItemAtPosition(position)
+                                .toString();
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+                    }
+                });
+
+
         if (!TextUtils.isEmpty(flag)) {
             // 从话题点击进来的
             if (flag.equals("THEME")) {
                 theme_time.setVisibility(View.GONE);
-                theme_tv_name.setText("球队名称：");
-                theme_tv_desc.setText("球队简介：");
+                tv_outtime.setVisibility(View.GONE);
+                spinner_main_edu.setVisibility(View.GONE);
+                theme_tv_name.setText("请输入球队名称：");
+                theme_tv_desc.setText("请输入球队简介：");
                 // 从活动点击进来的
             } else if (flag.equals("ACTIVITY")) {
                 theme_time.setVisibility(View.VISIBLE);
-                theme_tv_name.setText("联赛名称：");
-                theme_tv_time.setText("联赛时间及地点：");
-                theme_tv_desc.setText("联赛介绍：");
+                theme_tv_name.setText("请输入联赛名称：");
+                theme_tv_time.setText("请输入联赛地点：");
+                theme_tv_desc.setText("请选择开始时间：");
+                tv_outtime.setText("请选择结束时间：");
             }
         }
     }

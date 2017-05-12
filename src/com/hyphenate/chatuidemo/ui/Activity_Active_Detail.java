@@ -39,7 +39,7 @@ public class Activity_Active_Detail extends BaseActivity implements
     private ListView lv_comments;
     private EditText circleEt;
     private ImageView sendIv;
-    private TextView tv_active_time, tv_title, tv_oa_sender;
+    private TextView tv_active_time, tv_title, tv_active_address,tv_oa_sender,tv_active_endtime;
     // Activity最外层的Layout视图
     private ActiveDetail data;
     private boolean flag;
@@ -76,16 +76,23 @@ public class Activity_Active_Detail extends BaseActivity implements
         lv_comments = (ListView) findViewById(R.id.lv_comments);
         sendIv = (ImageView) findViewById(R.id.sendIv);
         tv_active_text = (TextView) findViewById(R.id.tv_active_text);
+        tv_active_endtime = (TextView) findViewById(R.id.tv_active_endtime);
         tv_oa_sender = (TextView) findViewById(R.id.tv_oa_sender);
+        tv_active_address = (TextView) findViewById(R.id.tv_active_address);
         ll_sign = (LinearLayout) findViewById(R.id.ll_sign);
         ll_comment = (LinearLayout) findViewById(R.id.ll_comment);
         editTextBodyLl = (LinearLayout) findViewById(R.id.editTextBodyLl);
         circleEt = (EditText) findViewById(R.id.circleEt);
         if (data.getFlag().equals("l0")) {
             tv_title.setText("联赛的标题 : " + data.getName());
-            tv_active_time.setText("联赛的时间和地点 : " + data.getTime());
+            tv_active_time.setText("联赛的开始时间 : " + data.getStarttime());
+            tv_active_endtime.setText("联赛的结束时间 : " + data.getEndtime());
             tv_person_start.setText("活动的发起人 : " + data.getMyNameOrOther());
-            tv_active_text.setText("联赛的介绍 : " + data.getAll());
+            tv_active_text.setText("联赛的模式 : " + data.getAll());
+            tv_active_address.setText("联赛的地点 : " + data.getAddress());
+            tv_active_endtime.setVisibility(View.VISIBLE);
+            tv_active_address.setVisibility(View.VISIBLE);
+            tv_active_time.setVisibility(View.VISIBLE);
         } else {
             tv_title.setText("球队的名称 : " + data.getName());
             tv_person_start.setText("球队的发起人 : " + data.getMyNameOrOther());

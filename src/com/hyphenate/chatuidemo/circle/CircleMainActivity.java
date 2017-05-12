@@ -187,7 +187,7 @@ public class CircleMainActivity extends Fragment implements OnRefreshListener, I
 	}
 
 	private void loadData() {
-		List<CircleItem> datas = DatasUtil.createCircleDatas();
+		List<CircleItem> datas = DatasUtil.createCircleDatas(getActivity());
 		mAdapter.setDatas(datas);
 		mAdapter.notifyDataSetChanged();
 	}

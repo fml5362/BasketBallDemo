@@ -45,6 +45,23 @@
                         android:textColor="@color/white"
                         android:textSize="16sp" />
 
+                    <TextView
+                        android:id="@+id/tv_active_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tv_active_endtime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/tv_active_text"
@@ -55,12 +72,15 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/tv_active_time"
+                        android:id="@+id/tv_active_address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
                         android:textColor="@color/white"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:visibility="gone" />
+
+
                 </LinearLayout>
             </LinearLayout>
 

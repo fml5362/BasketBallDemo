@@ -19,7 +19,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DbOpenHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 7;
+    private static final int DATABASE_VERSION = 8;
     private static DbOpenHelper instance;
 
     private static final String USERNAME_TABLE_CREATE = "CREATE TABLE "
@@ -30,13 +30,24 @@ public class DbOpenHelper extends SQLiteOpenHelper {
     private static final String QIUSAI_TABLE_CREATE = "CREATE TABLE "
             + QiusaixinxiDao.TABLE_NAME + " ("
             + QiusaixinxiDao.NAME + " TEXT, "
-            + QiusaixinxiDao.TIME + " TEXT, "
+            + QiusaixinxiDao.STARTTIME + " TEXT, "
+            + QiusaixinxiDao.ENDTIME + " TEXT, "
+            + QiusaixinxiDao.ADDRESS + " TEXT, "
             + QiusaixinxiDao.PERSON + " TEXT, "
             + QiusaixinxiDao.DELETEFLAG + " TEXT, "
             + QiusaixinxiDao.FLAG + " TEXT, "
             + QiusaixinxiDao.ID + " TEXT, "
             + QiusaixinxiDao.MYNAMEOROTHER + " TEXT, "
             + QiusaixinxiDao.ALLTEXT + " TEXT );";
+    private static final String CIRCLE_TABLE_CREATE = "CREATE TABLE "
+            + CircleDao.TABLE_NAME + " ("
+            + CircleDao.ID + " TEXT, "
+            + CircleDao.CONTENT + " TEXT, "
+            + CircleDao.CREATETIME + " TEXT, "
+            + CircleDao.TYPE + " TEXT, "
+            + CircleDao.LINKIMG + " TEXT, "
+            + CircleDao.LINKTITLE + " TEXT, "
+            + CircleDao.LINKURL + " TEXT );";
 
     private static final String INIVTE_MESSAGE_TABLE_CREATE = "CREATE TABLE "
             + InviteMessgeDao.TABLE_NAME + " ("
@@ -74,7 +85,7 @@ public class DbOpenHelper extends SQLiteOpenHelper {
     }
 
     private static String getUserDatabaseName() {
-        return  "fangmenglin_demo.db";
+        return "fangmenglin_demo.db";
     }
 
     @Override
@@ -84,6 +95,7 @@ public class DbOpenHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_PREF_TABLE);
         db.execSQL(ROBOT_TABLE_CREATE);
         db.execSQL(QIUSAI_TABLE_CREATE);
+        db.execSQL(CIRCLE_TABLE_CREATE);
 
     }
 
@@ -110,6 +122,9 @@ public class DbOpenHelper extends SQLiteOpenHelper {
         }
         if (oldVersion < 7) {
             db.execSQL(QIUSAI_TABLE_CREATE);
+        }
+        if (oldVersion < 8) {
+            db.execSQL(CIRCLE_TABLE_CREATE);
         }
     }
 

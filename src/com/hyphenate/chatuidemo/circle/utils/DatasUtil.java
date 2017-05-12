@@ -1,10 +1,14 @@
 package com.hyphenate.chatuidemo.circle.utils;
 
 
+import android.app.Activity;
+
+import com.hyphenate.chatuidemo.R;
 import com.hyphenate.chatuidemo.circle.bean.CircleItem;
 import com.hyphenate.chatuidemo.circle.bean.CommentItem;
 import com.hyphenate.chatuidemo.circle.bean.FavortItem;
 import com.hyphenate.chatuidemo.circle.bean.User;
+import com.hyphenate.chatuidemo.db.CircleDao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +20,12 @@ import java.util.Random;
  * @Description: TODO(这里用一句话描述这个类的作用)
  * @date 2015-12-28 下午4:16:21
  */
+
 public class DatasUtil {
     public static final String[] CONTENTS = {"明天操场召开篮球赛，火箭队与小牛队强烈对抗，有报名的吗？", "一、活动名称：“友谊第一，比赛第二”篮球比赛  二、活动目的：篮球比赛是中国的传统体育活动，在比赛中能够很好的体现队员之间的团结协作能力，从而加强参赛团体之间的合作、交流，增强整个参赛队伍之间的凝聚力。为了加强部门与部门，员工与公司之间的联系，加深员工之间的友谊，特举行此次篮球比赛。  三、参赛对象：篮球爱好者在职员工", "今天是个好日子，天气不错，有打球的没", "呵呵，今天打球被完虐啊", "图不错",
             "我勒个去，打了一天的球，累成狗"};
     public static final String[] PHOTOS = {
-            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1493797899759&di=11625cddb807443b2695a6e8d7caae21&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%253D580%2Fsign%3D0ebcfd63212dd42a5f0901a3333a5b2f%2Fe62e11dfa9ec8a13bab1ffeaf303918fa0ecc010.jpg",
+            "drawable://" + R.drawable.tu01,
             "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=429235647,268132490&fm=23&gp=0.jpg",
             "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3346721308,539128563&fm=23&gp=0.jpg",
             "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3140064774,2673655868&fm=23&gp=0.jpg",
@@ -81,15 +86,24 @@ public class DatasUtil {
         users.add(user7);
     }
 
-    public static List<CircleItem> createCircleDatas() {
+    public static List<CircleItem> createCircleDatas(Activity activity) {
         List<CircleItem> circleDatas = new ArrayList<CircleItem>();
+        CircleDao circleDao = new CircleDao(activity);
+        List<CircleItem> lists = circleDao.getMessagesList();
+        if (lists != null && lists.size() > 0) {
+            for (int i = 0; i < lists.size(); i++) {
+                CircleItem item = lists.get(i);
+                item.setFavorters(createFavortItemList());
+                item.setComments(createCommentItemList());
+            }
+        }
         for (int i = 0; i < 15; i++) {
             CircleItem item = new CircleItem();
             User user = getUser();
             item.setId(String.valueOf(circleId++));
             item.setUser(user);
             item.setContent(getContent());
-            item.setCreateTime("12月24日");
+            item.setCreateTime("5月10日");
 
             item.setFavorters(createFavortItemList());
             item.setComments(createCommentItemList());
@@ -104,7 +118,9 @@ public class DatasUtil {
             }
             circleDatas.add(item);
         }
-
+        if (lists != null && lists.size() > 0) {
+            circleDatas.addAll(0, lists);
+        }
         return circleDatas;
     }
 

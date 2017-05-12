@@ -133,8 +133,8 @@ public class QiuxunActivity extends Fragment  {
                 }
             }
             if (holder.tv_theme_time != null) {
-                if (!TextUtils.isEmpty(themeList.getTime())) {
-                    holder.tv_theme_time.setText(themeList.getTime());
+                if (!TextUtils.isEmpty(themeList.getStarttime())) {
+                    holder.tv_theme_time.setText(themeList.getStarttime());
                 }
             }
             if (holder.tv_dept != null) {

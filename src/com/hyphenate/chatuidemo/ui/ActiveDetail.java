@@ -6,19 +6,29 @@ public class ActiveDetail implements Serializable {
 
     private String name;
     private String id;
-    private String time;
+    private String starttime;
+    private String endtime;
+    private String address;
     private String all;
     private String person;
     private String flag;
     private String deleteFlag;
     private String myNameOrOther;
 
-    public String getMyNameOrOther() {
-        return myNameOrOther;
+    public String getAddress() {
+        return address;
     }
 
-    public void setMyNameOrOther(String myNameOrOther) {
-        this.myNameOrOther = myNameOrOther;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getAll() {
+        return all;
+    }
+
+    public void setAll(String all) {
+        this.all = all;
     }
 
     public String getDeleteFlag() {
@@ -29,12 +39,12 @@ public class ActiveDetail implements Serializable {
         this.deleteFlag = deleteFlag;
     }
 
-    public String getId() {
-        return id;
+    public String getEndtime() {
+        return endtime;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setEndtime(String endtime) {
+        this.endtime = endtime;
     }
 
     public String getFlag() {
@@ -45,12 +55,20 @@ public class ActiveDetail implements Serializable {
         this.flag = flag;
     }
 
-    public String getAll() {
-        return all;
+    public String getId() {
+        return id;
     }
 
-    public void setAll(String all) {
-        this.all = all;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getMyNameOrOther() {
+        return myNameOrOther;
+    }
+
+    public void setMyNameOrOther(String myNameOrOther) {
+        this.myNameOrOther = myNameOrOther;
     }
 
     public String getName() {
@@ -69,21 +87,23 @@ public class ActiveDetail implements Serializable {
         this.person = person;
     }
 
-    public String getTime() {
-        return time;
+    public String getStarttime() {
+        return starttime;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setStarttime(String starttime) {
+        this.starttime = starttime;
     }
 
     @Override
     public String toString() {
         return "ActiveDetail{" +
-                "all='" + all + '\'' +
+                "address='" + address + '\'' +
                 ", name='" + name + '\'' +
                 ", id='" + id + '\'' +
-                ", time='" + time + '\'' +
+                ", starttime='" + starttime + '\'' +
+                ", endtime='" + endtime + '\'' +
+                ", all='" + all + '\'' +
                 ", person='" + person + '\'' +
                 ", flag='" + flag + '\'' +
                 ", deleteFlag='" + deleteFlag + '\'' +

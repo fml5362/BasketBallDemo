@@ -7,6 +7,7 @@ import android.text.TextUtils;
 
 import com.hyphenate.chatuidemo.Constant;
 import com.hyphenate.chatuidemo.DemoApplication;
+import com.hyphenate.chatuidemo.circle.bean.CircleItem;
 import com.hyphenate.chatuidemo.domain.InviteMessage;
 import com.hyphenate.chatuidemo.domain.InviteMessage.InviteMesageStatus;
 import com.hyphenate.chatuidemo.domain.RobotUser;
@@ -219,7 +220,9 @@ public class DemoDBManager {
             values.put(QiusaixinxiDao.NAME, message.getName());
             values.put(QiusaixinxiDao.ALLTEXT, message.getAll());
             values.put(QiusaixinxiDao.PERSON, message.getPerson());
-            values.put(QiusaixinxiDao.TIME, message.getTime());
+            values.put(QiusaixinxiDao.STARTTIME, message.getStarttime());
+            values.put(QiusaixinxiDao.ENDTIME, message.getEndtime());
+            values.put(QiusaixinxiDao.ADDRESS, message.getAddress());
             values.put(QiusaixinxiDao.FLAG, message.getFlag());
             values.put(QiusaixinxiDao.ID, message.getId());
             values.put(QiusaixinxiDao.MYNAMEOROTHER, message.getMyNameOrOther());
@@ -227,6 +230,37 @@ public class DemoDBManager {
             db.insert(QiusaixinxiDao.TABLE_NAME, null, values);
 
             Cursor cursor = db.rawQuery("select last_insert_rowid() from " + QiusaixinxiDao.TABLE_NAME, null);
+            if (cursor.moveToFirst()) {
+                id = cursor.getInt(0);
+            }
+
+            cursor.close();
+        }
+        return id;
+    }
+
+    /**
+     * save a QIUSAI
+     *
+     * @param message
+     * @return return cursor of the message
+     */
+    public synchronized Integer savecircleMessage(CircleItem message) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        int id = -1;
+        if (db.isOpen()) {
+            ContentValues values = new ContentValues();
+            values.put(CircleDao.CONTENT, message.getContent());
+            values.put(CircleDao.CREATETIME, message.getCreateTime());
+            values.put(CircleDao.TYPE, message.getType());
+            values.put(CircleDao.LINKIMG, message.getLinkImg());
+            values.put(CircleDao.ID, message.getId());
+            values.put(CircleDao.LINKURL, message.getLinkUrl());
+            values.put(CircleDao.LINKTITLE, message.getLinkTitle());
+            db.insert(CircleDao.TABLE_NAME, null, values);
+
+
+            Cursor cursor = db.rawQuery("select last_insert_rowid() from " + CircleDao.TABLE_NAME, null);
             if (cursor.moveToFirst()) {
                 id = cursor.getInt(0);
             }
@@ -337,7 +371,9 @@ public class DemoDBManager {
                 ActiveDetail msg = new ActiveDetail();
                 String id = cursor.getString(cursor.getColumnIndex(QiusaixinxiDao.ID));
                 String from = cursor.getString(cursor.getColumnIndex(QiusaixinxiDao.NAME));
-                String groupid = cursor.getString(cursor.getColumnIndex(QiusaixinxiDao.TIME));
+                String groupid = cursor.getString(cursor.getColumnIndex(QiusaixinxiDao.STARTTIME));
+                String endtime = cursor.getString(cursor.getColumnIndex(QiusaixinxiDao.ENDTIME));
+                String address = cursor.getString(cursor.getColumnIndex(QiusaixinxiDao.ADDRESS));
                 String groupname = cursor.getString(cursor.getColumnIndex(QiusaixinxiDao.ALLTEXT));
                 String reason = cursor.getString(cursor.getColumnIndex(QiusaixinxiDao.PERSON));
                 String time = cursor.getString(cursor.getColumnIndex(QiusaixinxiDao.DELETEFLAG));
@@ -345,13 +381,55 @@ public class DemoDBManager {
                 String mynameorother = cursor.getString(cursor.getColumnIndex(QiusaixinxiDao.MYNAMEOROTHER));
 
                 msg.setId(id);
-                msg.setTime(groupid);
+                msg.setStarttime(groupid);
+                msg.setEndtime(endtime);
+                msg.setAddress(address);
                 msg.setName(from);
                 msg.setAll(groupname);
                 msg.setPerson(reason);
                 msg.setFlag(status);
                 msg.setDeleteFlag(time);
                 msg.setMyNameOrOther(mynameorother);
+
+
+                msgs.add(msg);
+            }
+            cursor.close();
+        }
+        return msgs;
+    }
+
+    /**
+     * get messges
+     *
+     * @return
+     */
+    synchronized public List<CircleItem> getcircleMessagesList() {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        List<CircleItem> msgs = new ArrayList<CircleItem>();
+        Cursor cursor;
+        if (db.isOpen()) {
+            cursor = db.rawQuery("select * from " + CircleDao.TABLE_NAME, null);
+
+
+
+            while (cursor.moveToNext()) {
+                CircleItem msg = new CircleItem();
+                String id = cursor.getString(cursor.getColumnIndex(CircleDao.ID));
+                String from = cursor.getString(cursor.getColumnIndex(CircleDao.CONTENT));
+                String groupid = cursor.getString(cursor.getColumnIndex(CircleDao.CREATETIME));
+                String endtime = cursor.getString(cursor.getColumnIndex(CircleDao.TYPE));
+                String address = cursor.getString(cursor.getColumnIndex(CircleDao.LINKIMG));
+                String groupname = cursor.getString(cursor.getColumnIndex(CircleDao.LINKURL));
+                String reason = cursor.getString(cursor.getColumnIndex(CircleDao.LINKTITLE));
+
+                msg.setId(id);
+                msg.setContent(from);
+                msg.setCreateTime(groupid);
+                msg.setType(endtime);
+                msg.setLinkImg(address);
+                msg.setLinkUrl(groupname);
+                msg.setLinkTitle(reason);
 
 
                 msgs.add(msg);
