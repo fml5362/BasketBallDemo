@@ -409,7 +409,7 @@ public class DemoDBManager {
         List<CircleItem> msgs = new ArrayList<CircleItem>();
         Cursor cursor;
         if (db.isOpen()) {
-            cursor = db.rawQuery("select * from " + CircleDao.TABLE_NAME, null);
+            cursor = db.rawQuery("select * from " + CircleDao.TABLE_NAME+ " desc", null);
 
 
 

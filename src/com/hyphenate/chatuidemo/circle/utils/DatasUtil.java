@@ -11,6 +11,7 @@ import com.hyphenate.chatuidemo.circle.bean.User;
 import com.hyphenate.chatuidemo.db.CircleDao;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -26,22 +27,31 @@ public class DatasUtil {
             "我勒个去，打了一天的球，累成狗"};
     public static final String[] PHOTOS = {
             "drawable://" + R.drawable.tu01,
-            "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=429235647,268132490&fm=23&gp=0.jpg",
-            "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3346721308,539128563&fm=23&gp=0.jpg",
-            "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3140064774,2673655868&fm=23&gp=0.jpg",
-            "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2719064470,1161794942&fm=23&gp=0.jpg",
-            "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2371212661,1710967258&fm=23&gp=0.jpg",
-            "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3262821439,3490171191&fm=23&gp=0.jpg",
-            "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=193155294,415001578&fm=23&gp=0.jpg",
-            "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1887551697,3356711799&fm=23&gp=0.jpg",
-            "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=429235647,268132490&fm=23&gp=0.jpg",
-            "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1113280114,2992304793&fm=23&gp=0.jpg",
-            "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1363838375,2902689632&fm=23&gp=0.jpg",
-            "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=831251050,3150461679&fm=23&gp=0.jpg",
-            "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1895379826,2564156552&fm=23&gp=0.jpg",
-            "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2459961813,1993022227&fm=23&gp=0.jpg",
-            "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3307072143,804823431&fm=23&gp=0.jpg",
-            "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=493096788,3940101369&fm=23&gp=0.jpg"};
+            "drawable://" + R.drawable.tu02,
+            "drawable://" + R.drawable.tu03,
+            "drawable://" + R.drawable.tu04,
+            "drawable://" + R.drawable.tu05,
+            "drawable://" + R.drawable.tu06,
+            "drawable://" + R.drawable.tu07,
+            "drawable://" + R.drawable.tu08,
+            "drawable://" + R.drawable.tu09,
+            "drawable://" + R.drawable.tu10,
+            "drawable://" + R.drawable.tu11,
+            "drawable://" + R.drawable.tu12,
+            "drawable://" + R.drawable.tu13,
+            "drawable://" + R.drawable.tu14,
+            "drawable://" + R.drawable.tu15,
+            "drawable://" + R.drawable.tu16,
+            "drawable://" + R.drawable.tu17,
+            "drawable://" + R.drawable.tu18,
+            "drawable://" + R.drawable.tu19,
+            "drawable://" + R.drawable.tu20,
+            "drawable://" + R.drawable.tu21,
+            "drawable://" + R.drawable.tu22,
+            "drawable://" + R.drawable.tu23,
+            "drawable://" + R.drawable.tu24,
+            "drawable://" + R.drawable.tu25
+    };
     public static final String[] HEADIMG = {
             "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=4005501418,45289660&fm=23&gp=0.jpg",
             "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3150900731,3826916764&fm=23&gp=0.jpg",
@@ -93,6 +103,7 @@ public class DatasUtil {
         if (lists != null && lists.size() > 0) {
             for (int i = 0; i < lists.size(); i++) {
                 CircleItem item = lists.get(i);
+                item.setUser(curUser);
                 item.setFavorters(createFavortItemList());
                 item.setComments(createCommentItemList());
             }
@@ -119,6 +130,7 @@ public class DatasUtil {
             circleDatas.add(item);
         }
         if (lists != null && lists.size() > 0) {
+            Collections.reverse(lists); // 倒序排列
             circleDatas.addAll(0, lists);
         }
         return circleDatas;

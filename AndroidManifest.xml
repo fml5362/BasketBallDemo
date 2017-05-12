@@ -188,6 +188,10 @@
             android:theme="@style/horizontal_slide"
             android:windowSoftInputMode="adjustPan" />
         <activity
+            android:name=".ui.Circle_SendActivity"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name=".ui.PublicWebviewActivity"
             android:theme="@style/horizontal_slide"
             android:windowSoftInputMode="adjustPan" />
@@ -499,7 +503,6 @@
             android:name="com.umeng.update.UpdateDialogActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-        <!-- 设置环信应用的appkey -->
         <meta-data
             android:name="EASEMOB_APPKEY"
             android:value="1180170512115549#bastball" />

@@ -30,7 +30,7 @@ import com.hyphenate.chatuidemo.R;
  */
 @SuppressWarnings({"FieldCanBeLocal"})
 public class SaishiFragment extends Fragment implements OnClickListener {
-    private RelativeLayout qiudui_rl, liansai_rl;
+    private RelativeLayout qiudui_rl, dongtai_rl,liansai_rl;
 
     public SaishiFragment() {
     }
@@ -56,8 +56,10 @@ public class SaishiFragment extends Fragment implements OnClickListener {
     private void initView() {
         qiudui_rl = (RelativeLayout) getView().findViewById(R.id.qiudui_rl);
         liansai_rl = (RelativeLayout) getView().findViewById(R.id.liansai_rl);
+        dongtai_rl = (RelativeLayout) getView().findViewById(R.id.dongtai_rl);
         qiudui_rl.setOnClickListener(this);
         liansai_rl.setOnClickListener(this);
+        dongtai_rl.setOnClickListener(this);
     }
 
 
@@ -69,6 +71,9 @@ public class SaishiFragment extends Fragment implements OnClickListener {
                 break;
             case R.id.liansai_rl:
                 startActivity(new Intent(getActivity(), Circle_Send_ThemeActivity.class).putExtra("THEME", "ACTIVITY"));
+                break;
+            case R.id.dongtai_rl:
+                startActivity(new Intent(getActivity(), Circle_SendActivity.class));
                 break;
         }
     }
