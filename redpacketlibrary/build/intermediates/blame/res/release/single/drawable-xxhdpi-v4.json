@@ -120,12 +120,12 @@
         "source": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\res\\drawable-xxhdpi\\em_random_chatfrom_bg.png"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\res\\merged\\release\\drawable-xxhdpi-v4\\em_chat_red_packet_normal.png",
-        "source": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\res\\drawable-xxhdpi\\em_chat_red_packet_normal.png"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\res\\merged\\release\\drawable-xxhdpi-v4\\rp_ad_success.png",
         "source": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\exploded-aar\\com.hyphenate.redpacket\\redpacket-alipay\\1.1.2\\res\\drawable-xxhdpi-v4\\rp_ad_success.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\res\\merged\\release\\drawable-xxhdpi-v4\\em_chat_red_packet_normal.png",
+        "source": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\res\\drawable-xxhdpi\\em_chat_red_packet_normal.png"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\easemob-sdk-3.3.1_r1\\examples\\ChatDemoUI3.0\\redpacketlibrary\\build\\intermediates\\res\\merged\\release\\drawable-xxhdpi-v4\\rp_packet_group_detail_bg.png",

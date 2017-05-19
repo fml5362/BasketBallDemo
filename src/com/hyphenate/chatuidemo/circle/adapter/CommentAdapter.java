@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.hyphenate.chat.EMClient;
 import com.hyphenate.chatuidemo.R;
 import com.hyphenate.chatuidemo.circle.bean.CommentItem;
 import com.hyphenate.chatuidemo.circle.spannable.CircleMovementMethod;
@@ -31,53 +32,53 @@ public class CommentAdapter {
     private CommentListView mListview;
     private List<CommentItem> mDatas;
 
-    public CommentAdapter(Context context){
+    public CommentAdapter(Context context) {
         mContext = context;
         mDatas = new ArrayList<CommentItem>();
     }
 
-    public CommentAdapter(Context context, List<CommentItem> datas){
+    public CommentAdapter(Context context, List<CommentItem> datas) {
         mContext = context;
         setDatas(datas);
     }
 
-    public void bindListView(CommentListView listView){
-        if(listView == null){
+    public void bindListView(CommentListView listView) {
+        if (listView == null) {
             throw new IllegalArgumentException("CommentListView is null....");
         }
         mListview = listView;
     }
 
-    public void setDatas(List<CommentItem> datas){
-        if(datas == null ){
+    public void setDatas(List<CommentItem> datas) {
+        if (datas == null) {
             datas = new ArrayList<CommentItem>();
         }
         mDatas = datas;
     }
 
-    public List<CommentItem> getDatas(){
+    public List<CommentItem> getDatas() {
         return mDatas;
     }
 
-    public int getCount(){
-        if(mDatas == null){
+    public int getCount() {
+        if (mDatas == null) {
             return 0;
         }
         return mDatas.size();
     }
 
-    public CommentItem getItem(int position){
-        if(mDatas == null){
+    public CommentItem getItem(int position) {
+        if (mDatas == null) {
             return null;
         }
-        if(position < mDatas.size()){
+        if (position < mDatas.size()) {
             return mDatas.get(position);
-        }else{
+        } else {
             throw new ArrayIndexOutOfBoundsException();
         }
     }
 
-    private View getView(final int position){
+    private View getView(final int position) {
         System.out.println("CommentAdapter getView-----------------------" + position);
         View convertView = View.inflate(mContext,
                 R.layout.im_social_item_comment, null);
@@ -87,6 +88,11 @@ public class CommentAdapter {
 
         final CommentItem bean = mDatas.get(position);
         String name = bean.getUser().getName();
+        if (!TextUtils.isEmpty(name)) {
+            if (name.equals("自己")) {
+                name = EMClient.getInstance().getCurrentUser();
+            }
+        }
         String id = bean.getId();
         String toReplyName = "";
         if (bean.getToReplyUser() != null) {
@@ -142,19 +148,19 @@ public class CommentAdapter {
         return subjectSpanText;
     }
 
-    public void notifyDataSetChanged(){
-        if(mListview == null){
+    public void notifyDataSetChanged() {
+        if (mListview == null) {
             throw new NullPointerException("listview is null, please bindListView first...");
         }
         mListview.removeAllViews();
-        if(mDatas == null || mDatas.size() == 0){
+        if (mDatas == null || mDatas.size() == 0) {
             return;
         }
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        for(int i=0; i<mDatas.size(); i++){
+        for (int i = 0; i < mDatas.size(); i++) {
             final int index = i;
             View view = getView(index);
-            if(view == null){
+            if (view == null) {
                 throw new NullPointerException("listview item layout is null, please check getView()...");
             }
 

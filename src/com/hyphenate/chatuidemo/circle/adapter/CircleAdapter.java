@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hyphenate.chat.EMClient;
 import com.hyphenate.chatuidemo.DemoApplication;
 import com.hyphenate.chatuidemo.R;
 import com.hyphenate.chatuidemo.circle.ImagePagerActivity;
@@ -52,7 +53,6 @@ public class CircleAdapter extends BaseAdapter {
     private static final String ITEM_TYPE_URL = "1";
     private static final String ITEM_TYPE_IMAGE = "2";
     private static final int ITEM_VIEW_TYPE_COUNT = 3;
-
     private Context mContext;
     private CirclePresenter mPresenter;
     private List<CircleItem> datas = new ArrayList<CircleItem>();
@@ -180,7 +180,13 @@ public class CircleAdapter extends BaseAdapter {
         boolean hasComment = circleItem.hasComment();
 
         ImageLoader.getInstance().displayImage(headImg, holder.headIv);
-        holder.nameTv.setText(name);
+        if (!TextUtils.isEmpty(name)) {
+            if (name.equals("自己")) {
+                holder.nameTv.setText(EMClient.getInstance().getCurrentUser());
+            } else {
+                holder.nameTv.setText(name);
+            }
+        }
         holder.timeTv.setText(createTime);
         holder.contentTv.setText(content);
         holder.contentTv.setVisibility(TextUtils.isEmpty(content) ? View.GONE : View.VISIBLE);
